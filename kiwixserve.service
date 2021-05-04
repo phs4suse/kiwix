@@ -1,0 +1,15 @@
+/etc/systemd/system # cat kiwixserve.service 
+[Unit]
+Description=Kiwix Server
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/sbin/kiwix-serve --library /root/kiwix_library.xml
+
+[Install]
+WantedBy=multi-user.target
