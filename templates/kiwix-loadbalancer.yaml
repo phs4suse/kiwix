@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/publicEndpoints: '[{"addresses":["192.168.222.101"],"port":80,"protocol":"TCP","serviceName":"kiwix-ns:kiwix-loadbalancer","allNodes":false}]'
+    field.cattle.io/targetWorkloadIds: '["kiwix-ns/kiwix"]'
+    management.cattle.io/ui-managed: "true"
+  creationTimestamp: "2022-03-27T19:07:59Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:field.cattle.io/publicEndpoints: {}
+          f:field.cattle.io/targetWorkloadIds: {}
+          f:management.cattle.io/ui-managed: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"4d0af06e-4c44-4854-aa33-602c01de414a"}: {}
+      f:spec:
+        f:allocateLoadBalancerNodePorts: {}
+        f:externalTrafficPolicy: {}
+        f:internalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":80,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: agent
+    operation: Update
+    time: "2022-03-27T19:07:59Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: controller
+    operation: Update
+    subresource: status
+    time: "2022-03-27T19:07:59Z"
+  name: kiwix-loadbalancer
+  namespace: kiwix-ns
+  ownerReferences:
+  - apiVersion: apps/v1
+    controller: true
+    kind: Deployment
+    name: kiwix
+    uid: 4d0af06e-4c44-4854-aa33-602c01de414a
+  resourceVersion: "118872"
+  uid: 684fb240-3758-4e56-a9af-2b11fbfab412
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.43.196.127
+  clusterIPs:
+  - 10.43.196.127
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: kiwix-web
+    nodePort: 30071
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    workload.user.cattle.io/workloadselector: apps.deployment-kiwix-ns-kiwix
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.168.222.101
