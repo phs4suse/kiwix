@@ -1,52 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    field.cattle.io/targetWorkloadIds: '["kiwix-ns/kiwix"]'
-    management.cattle.io/ui-managed: "true"
-  creationTimestamp: "2022-03-27T19:07:59Z"
-  managedFields:
-  - apiVersion: v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:metadata:
-        f:annotations:
-          .: {}
-          f:field.cattle.io/targetWorkloadIds: {}
-          f:management.cattle.io/ui-managed: {}
-        f:ownerReferences:
-          .: {}
-          k:{"uid":"4d0af06e-4c44-4854-aa33-602c01de414a"}: {}
-      f:spec:
-        f:internalTrafficPolicy: {}
-        f:ports:
-          .: {}
-          k:{"port":80,"protocol":"TCP"}:
-            .: {}
-            f:name: {}
-            f:port: {}
-            f:protocol: {}
-            f:targetPort: {}
-        f:selector: {}
-        f:sessionAffinity: {}
-        f:type: {}
-    manager: agent
-    operation: Update
-    time: "2022-03-27T19:07:59Z"
   name: kiwix
   namespace: kiwix-ns
-  ownerReferences:
-  - apiVersion: apps/v1
-    controller: true
-    kind: Deployment
-    name: kiwix
-    uid: 4d0af06e-4c44-4854-aa33-602c01de414a
-  resourceVersion: "118857"
-  uid: fe7e2793-f096-4514-b540-720aba08eb62
 spec:
-  clusterIP: 10.43.149.3
-  clusterIPs:
-  - 10.43.149.3
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4
@@ -60,5 +17,3 @@ spec:
     workload.user.cattle.io/workloadselector: apps.deployment-kiwix-ns-kiwix
   sessionAffinity: None
   type: ClusterIP
-status:
-  loadBalancer: {}
