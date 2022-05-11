@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+x-apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kiwix
@@ -47,6 +47,5 @@ spec:
       terminationGracePeriodSeconds: 30
       volumes:
       - name: vol-g3bdl
-        nfs:
-          path: /nfsshare
-          server: 192.168.222.218
+        persistentVolumeClaim:
+          claimName: kiwix-pvc
