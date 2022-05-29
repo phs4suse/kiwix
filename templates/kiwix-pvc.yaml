@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kiwix-pvc
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadOnlyMany
+  volumeName: {{ values.storage.volume_name }}
+  resources:
+    requests:
+      storage: {{ values.storage.storage_size }}

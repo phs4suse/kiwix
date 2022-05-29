@@ -38,7 +38,7 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /data
-          name: vol-g3bdl
+          name: kiwix-volume
         workingDir: /data
       dnsPolicy: ClusterFirst
       restartPolicy: Always
@@ -46,6 +46,6 @@ spec:
       securityContext: {}
       terminationGracePeriodSeconds: 30
       volumes:
-      - name: vol-g3bdl
+      - name: kiwix-volume
         persistentVolumeClaim:
           claimName: kiwix-pvc
