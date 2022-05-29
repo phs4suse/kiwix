@@ -6,7 +6,7 @@ spec:
   storageClassName: ""
   accessModes:
     - ReadOnlyMany
-  volumeName: {{ values.storage.volume_name }}
+  volumeName: {{ .Values.storage.volume_name }}
   resources:
     requests:
-      storage: {{ values.storage.storage_size }}
+      storage: {{ .Values.storage.storage_size }}
