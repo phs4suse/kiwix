@@ -1,12 +1,12 @@
 # Default values for kiwix.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+namespace: kiwix
+
 image:
   repository: kiwix/kiwix-serve
-  tag: ""
-  args: 
-  - --library
-  - library.xml
+  tag: "3.2.0-5"
+  args: []
   env:
   - name: DOWNLOAD
     value: https://download.kiwix.org/zim/wikipedia_bm_all.zim
