@@ -24,6 +24,11 @@ spec:
       affinity: {}
       containers:
       - args: {{ .Values.image.args }}
+        env:
+        {{- range .Values.image.env }}
+        - name: {{ .name }}
+          value: {{ .value }}
+        {{- end }}
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: Always
         name: container-0

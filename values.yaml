@@ -7,6 +7,9 @@ image:
   args: 
   - --library
   - library.xml
+  env:
+  - name: DOWNLOAD
+    value: https://download.kiwix.org/zim/wikipedia_bm_all.zim
 
 storage:
   volume_name: 
