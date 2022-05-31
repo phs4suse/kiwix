@@ -4,6 +4,9 @@
 image:
   repository: kiwix/kiwix-serve
   tag: ""
+  args: 
+  - --library
+  - library.xml
 
 storage:
   volume_name: 

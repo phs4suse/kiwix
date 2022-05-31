@@ -23,9 +23,7 @@ spec:
     spec:
       affinity: {}
       containers:
-      - args:
-        - --library
-        - library.xml
+      - args: {{ .Values.image.args }}
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: Always
         name: container-0
