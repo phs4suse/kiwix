@@ -51,4 +51,4 @@ spec:
       volumes:
       - name: kiwix-volume
         persistentVolumeClaim:
-          claimName: kiwix-pvc
+          claimName: {{ .Release.Name }}-pvc
