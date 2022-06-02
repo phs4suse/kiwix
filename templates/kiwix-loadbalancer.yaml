@@ -12,7 +12,6 @@ spec:
   ipFamilyPolicy: SingleStack
   ports:
   - name: {{ .Release.Name }}-web
-    nodePort: 30071
     port: 80
     protocol: TCP
     targetPort: 80
