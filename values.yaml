@@ -1,3 +1,16 @@
 # Default values for kiwix.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+namespace: kiwix
+
+image:
+  repository: smuse/suse-bci-kiwix-serve
+  tag: "3.2.0"
+  args: []
+  env:
+  - name: DOWNLOAD
+    value: https://download.kiwix.org/zim/wikipedia_bm_all.zim
+
+storage:
+  volume_name: 
+  storage_size: 

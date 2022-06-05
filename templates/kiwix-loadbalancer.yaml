@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: kiwix-loadbalancer
-  namespace: kiwix-ns
+  name: {{ .Release.Name }}-loadbalancer
+  namespace: {{ .Values.namespace }}
 spec:
   allocateLoadBalancerNodePorts: true
   externalTrafficPolicy: Cluster
@@ -11,8 +11,7 @@ spec:
   - IPv4
   ipFamilyPolicy: SingleStack
   ports:
-  - name: kiwix-web
-    nodePort: 30071
+  - name: {{ .Release.Name }}-web
     port: 80
     protocol: TCP
     targetPort: 80

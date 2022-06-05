@@ -1,52 +1,19 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: kiwix
-  namespace: kiwix-ns
+  name: {{ .Release.Name }}-svc
+  namespace: {{ .Values.namespace }}
 spec:
-  progressDeadlineSeconds: 600
-  replicas: 1
-  revisionHistoryLimit: 10
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: kiwix-web
+    port: 80
+    protocol: TCP
+    targetPort: 80
   selector:
-    matchLabels:
-      workload.user.cattle.io/workloadselector: apps.deployment-kiwix-ns-kiwix
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
-  template:
-    metadata:
-      creationTimestamp: null
-      labels:
-        workload.user.cattle.io/workloadselector: apps.deployment-kiwix-ns-kiwix
-    spec:
-      affinity: {}
-      containers:
-      - args:
-        - --library
-        - library.xml
-        image: kiwix/kiwix-serve
-        imagePullPolicy: Always
-        name: container-0
-        ports:
-        - containerPort: 80
-          name: kiwix-web
-          protocol: TCP
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /data
-          name: vol-g3bdl
-        workingDir: /data
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
-      volumes:
-      - name: vol-g3bdl
-        nfs:
-          path: /nfsshare
-          server: 192.168.222.218
+    workload.user.cattle.io/workloadselector: apps.deployment-kiwix-ns-kiwix
+  sessionAffinity: None
+  type: ClusterIP
