@@ -16,6 +16,6 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    workload.user.cattle.io/workloadselector: apps.deployment-kiwix-ns-kiwix
+    workload: {{ .Release.Name }}-pod
   sessionAffinity: None
   type: LoadBalancer
