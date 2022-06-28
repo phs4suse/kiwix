@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   progressDeadlineSeconds: 600
-  replicas: 1
+  replicas: {{ .Values.replicas }}
   revisionHistoryLimit: 10
   selector:
     matchLabels:

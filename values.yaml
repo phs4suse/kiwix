@@ -3,6 +3,8 @@
 # Declare variables to be passed into your templates.
 namespace: kiwix
 
+replicas: 1
+
 image:
   repository: smuse/suse-bci-kiwix-serve
   tag: "3.2.0"
