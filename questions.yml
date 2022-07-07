@@ -56,12 +56,10 @@ questions:
   show_subquestion_if: true
   subquestions:
   - variable: image.env.0.name
-    default: ""
     type: string
-    label: ""
+    label: "DOWNLOAD"
     required: true
   - variable: image.env.0.value
-    default: ""
     type: string
     label: "URL"
     required: true

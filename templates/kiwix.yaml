@@ -34,7 +34,7 @@ spec:
         name: container-0
         ports:
         - containerPort: 80
-          name: {{ .Release.Name }}-web
+          name: http-web
           protocol: TCP
         resources: {}
         terminationMessagePath: /dev/termination-log
