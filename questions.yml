@@ -56,12 +56,12 @@ questions:
   show_subquestion_if: true
   subquestions:
   - variable: image.env.0.name
-    default: "DOWNLOAD"
+    default: ""
     type: string
-    label: "DOWNLOAD"
+    label: ""
     required: true
   - variable: image.env.0.value
-    default: "https://download.kiwix.org/zim/wikipedia_bm_all.zim"
+    default: ""
     type: string
     label: "URL"
     required: true
