@@ -1,0 +1,49 @@
+questions:
+- variable: namespace
+  default: "kiwix"
+  type: string
+  required: true
+  label: "name"
+  group: "Deployment"
+  description:
+
+- variable: replicas
+  default: 1
+  type: int
+  required: true
+  label: "Number of replicas"
+  group: "Deployment"
+  description: ""
+
+- variable: image.repository
+  default: "smuse/suse-bci-kiwix-serve"
+  type: string
+  required: true
+  label: "Container Image"
+  group: "Deployment"
+  description: ""
+
+- variable: image.tag
+  default: "3.2.0"
+  type: string
+  required: true
+  label: "Image tag"
+  group: "Deployment"
+  description: ""
+
+# 
+
+
+- variable: storage.volume_name
+  type: string
+  required: true
+  label: "Volume Name"
+  group: "Storage"
+  description: "Persistent Volume name"
+
+- variable: stroage.storage_size
+  type: string
+  required: true
+  label: "Size"
+  group: "Storage"
+  description: "Size of your persistent volume"
