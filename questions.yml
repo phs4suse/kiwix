@@ -3,9 +3,9 @@ questions:
   default: "kiwix"
   type: string
   required: true
-  label: "name"
+  label: "Namespace"
   group: "Deployment"
-  description:
+  description: "Namespace to deploy Kiwix"
 
 - variable: replicas
   default: 1
@@ -31,9 +31,7 @@ questions:
   group: "Deployment"
   description: ""
 
-# 
-
-
+#  Storage
 - variable: storage.volume_name
   type: string
   required: true
@@ -41,9 +39,35 @@ questions:
   group: "Storage"
   description: "Persistent Volume name"
 
-- variable: stroage.storage_size
+- variable: storage.storage_size
   type: string
   required: true
   label: "Size"
   group: "Storage"
   description: "Size of your persistent volume"
+
+# # Kiwix Configuration
+# - variable: downloadFile
+#   default: "true"
+#   label: "Use Remote Zim File"
+#   type: boolean
+#   group: "Kiwix Configuration"
+#   show_subquestion_if: true
+#   subquestions:
+#   - variable: image.env.0.value
+#     default: "https://download.kiwix.org/zim/wikipedia_bm_all.zim"
+#     type: string
+#     label: "URL"
+#     required: true
+
+- variable: libraryXML
+  default: "true"
+  label: "Use local library"
+  type: boolean
+  group: "Kiwix Configuration"
+  show_subquestion_if: true
+  subquestions:
+  - variable: image.args.0
+    type: string
+    label: "Filename"
+    required: true
