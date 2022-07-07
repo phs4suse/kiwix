@@ -48,7 +48,7 @@ questions:
 
 # Kiwix Configuration
 - variable: downloadFile
-  default: "true"
+  default: "false"
   label: "Use Remote Zim File"
   type: boolean
   group: "Kiwix Configuration"
@@ -65,7 +65,7 @@ questions:
     required: true
 
 - variable: libraryXML
-  default: "true"
+  default: "false"
   label: "Use local library"
   type: boolean
   group: "Kiwix Configuration"
