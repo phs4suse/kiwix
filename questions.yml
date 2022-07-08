@@ -1,0 +1,77 @@
+questions:
+- variable: namespace
+  default: "kiwix"
+  type: string
+  required: true
+  label: "Namespace"
+  group: "Deployment"
+  description: "Namespace to deploy Kiwix"
+
+- variable: replicas
+  default: 1
+  type: int
+  required: true
+  label: "Number of replicas"
+  group: "Deployment"
+  description: ""
+
+- variable: image.repository
+  default: "smuse/suse-bci-kiwix-serve"
+  type: string
+  required: true
+  label: "Container Image"
+  group: "Deployment"
+  description: ""
+
+- variable: image.tag
+  default: "3.2.0"
+  type: string
+  required: true
+  label: "Image tag"
+  group: "Deployment"
+  description: ""
+
+#  Storage
+- variable: storage.volume_name
+  type: string
+  required: true
+  label: "Volume Name"
+  group: "Storage"
+  description: "Persistent Volume name"
+
+- variable: storage.storage_size
+  type: string
+  required: true
+  label: "Size"
+  group: "Storage"
+  description: "Size of your persistent volume"
+
+# Kiwix Configuration
+- variable: downloadFile
+  default: "false"
+  label: "Use Remote Zim File"
+  type: boolean
+  group: "Kiwix Configuration"
+  description: "This will download the remote zim file"
+  show_subquestion_if: true
+  subquestions:
+  - variable: image.env.0.name
+    type: string
+    label: "DOWNLOAD"
+    required: true
+  - variable: image.env.0.value
+    type: string
+    label: "URL"
+    required: true
+
+- variable: libraryXML
+  default: "false"
+  label: "Use local library"
+  type: boolean
+  group: "Kiwix Configuration"
+  show_subquestion_if: true
+  subquestions:
+  - variable: image.args.0
+    type: string
+    label: "Filename"
+    required: true

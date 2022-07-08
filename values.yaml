@@ -3,13 +3,13 @@
 # Declare variables to be passed into your templates.
 namespace: kiwix
 
+replicas: 1
+
 image:
   repository: smuse/suse-bci-kiwix-serve
   tag: "3.2.0"
   args: []
-  env:
-  - name: DOWNLOAD
-    value: https://download.kiwix.org/zim/wikipedia_bm_all.zim
+  env: []
 
 storage:
   volume_name: 

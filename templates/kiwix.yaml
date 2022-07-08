@@ -5,11 +5,11 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   progressDeadlineSeconds: 600
-  replicas: 1
+  replicas: {{ .Values.replicas }}
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: apps.deployment-kiwix-ns-kiwix
+      workload: {{ .Release.Name }}-pod
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -19,7 +19,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: apps.deployment-kiwix-ns-kiwix
+        workload: {{ .Release.Name }}-pod
     spec:
       affinity: {}
       containers:
@@ -34,7 +34,7 @@ spec:
         name: container-0
         ports:
         - containerPort: 80
-          name: {{ .Release.Name }}-web
+          name: http-web
           protocol: TCP
         resources: {}
         terminationMessagePath: /dev/termination-log
